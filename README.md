@@ -2,8 +2,6 @@
 
 ## 📝 QCM en POO PHP avec Entités, Repositories, Managers, et Autoloader
 
-Ce TP s'adresse aux apprenants ayant déjà un niveau correct en développement web et sert d'alternative à sa version classique : [POO-QCM-Refacto](https://github.com/G404-DWWM/POO-QCM-Refacto).
-
 ➡️ Il prend en compte les enseignements et recommandation du [Memo](https://github.com/G404-DWWM/POO-Memo).
 
 ## 🚀 Introduction
