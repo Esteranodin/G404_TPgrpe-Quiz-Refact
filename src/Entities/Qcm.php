@@ -10,9 +10,9 @@ class Qcm
 
     // Méthodes magiques
 
-    public function __construct()
+    public function __construct(string $name)
     {
-        // $this->name;
+        $this->name = $name;
         $this->questions = [];
     }
 
@@ -43,12 +43,12 @@ class Qcm
 
     // Méthodes
 
-    public function addNameQcm(string $name): self
-    {
+    // public function addNameQcm(string $name): self
+    // {
 
-        $this->name = $name;
-        return $this;
-    }
+    //     $this->name = $name;
+    //     return $this;
+    // }
 
     public function showQcm(): self
     {

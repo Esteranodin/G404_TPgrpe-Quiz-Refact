@@ -1,25 +1,65 @@
-<?php 
+<?php
 
-include_once'../utils/autoloader.php';
+include_once '../utils/autoloader.php';
 
-$qcm = new Qcm();
+$qcm = new Qcm("La Prog. orientée objet");
 
-var_dump($qcm->addNameQcm("blabla")->showQcm());
+$question = new Question("POO signifie :");
+$question2 = new Question("L'héritage c'est quoi :");
 
-// $question = new Question('POO signifie :');
+$reponse = new Answer("les bezjejzkekd", true);
 
 
-// $answers = [
-//     new Answer('Programmation Orientée Objet', true),
-//     new Answer('Papillon Onirique Ostentatoire')
-// ];
-// $question->setAnswers($answers);
-// $question->setExplanation('La réponse correcte est "Programmation Orientée Objet".');
-// $questions = [
-//     $question
-// ];
-// $qcm->setQuestions($questions);
+$answers = [
+    new Answer('Programmation Orientée Objet',true),
+    new Answer('Papillon Onirique Ostentatoire')
+];
 
-// var_dump($qcm) 
-// vous devez avoir une instance de Qcm qui a un titre et un tableau de Question. Chaque Question a un intitulé, une explication de sa bonne réponse et un tableau d'Answer possible. Chaque Answer a un intitulé et si c'est une bonne ou mauvaise réponse.
+
+$answers2 = [
+    new Answer('De la thune'),
+    new Answer('Un principe de POO', true)
+];
+
+
+// if ($answers2[1]->getAnswerGood() === true){
+// echo"hjehrjkezh";
+// } else {
+//     echo "non";
+// }
+
+
+$question->setAnswers($answers);
+$question2->setAnswers($answers2);
+
+
+$question->setExplanation('La réponse correcte est "Programmation Orientée Objet".');
+
+$question2->setExplanation('La réponse correcte est "Un principe de POO".');
+
+$questions = [
+    $question,
+    $question2
+];
+
+$qcm->setQuestions($questions);
+
+$QcmManager = new QcmManager();
+
 ?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<?=
+$QcmManager->generateDisplay($qcm);
+?>
+    
+</body>
+</html>
