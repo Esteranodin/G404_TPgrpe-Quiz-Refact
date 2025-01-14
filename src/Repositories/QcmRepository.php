@@ -27,21 +27,15 @@ class QcmRepository extends AbstractRepository
 
     public function find(int $id): ?Qcm
     {
-        $stmt = $this->db->prepare("SELECT id FROM quiz WHERE id = :id");
+        $stmt = $this->db->prepare("SELECT * FROM quiz WHERE id = :id");
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->execute();
-        $idQcm = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-        return $idQcm;
-
+        $qcmData = $stmt->fetch(PDO::FETCH_ASSOC);
     
-
-  
-    
-
-
-
-
+        if ($qcmData) {
+            return QcmMapper::mapToObject($qcmData); // Utiliser le mapper pour créer l'objet Qcm
+        }
+        return null;
     }
+    
 }

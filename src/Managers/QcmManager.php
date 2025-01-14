@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 final class QcmManager
 {
@@ -13,85 +13,56 @@ final class QcmManager
         $this->answerRepository = new AnswerRepository();
     }
 
-
-
+    // Méthode privée pour construire le QCM
     private function buildQcm(int $idQuiz): Qcm
     {
-
-
-        // Ici on récupère juste le thème du quiz à la position $idQuiz
+        // Récupérer le QCM depuis la base de données
         $qcm = $this->qcmRepository->find($idQuiz);
 
-
-        // Ici on récupère les questions liées a ce thème 
         if ($qcm) {
+            // Ajouter les questions liées au QCM
             $questions = $this->questionRepository->findAllByQcm($qcm->getId());
             $qcm->setQuestions($questions);
         }
-       
 
-        // Ici on récupère les réponses d'une question
+        // Ajouter les réponses pour chaque question
         foreach ($qcm->getQuestions() as $question) {
-            $answers = $this->answerRepository->findAllByQuestion($question->getId());
+            $answers = $this->answerRepository->findAllByQuestion($question->getIdQuestion());
             $question->setAnswers($answers);
         }
 
         return $qcm;
     }
 
-
-    private function displayQuestion(Qcm $qcm): string
-    {
-        ob_start();
-
-?>
-        <section>
-            <h1>
-            <?= $qcm->getNameQuestion() ?>
-            </h1>
-
-
-            <h2>
-
-
-            <?= $answers->getNameAnswer() ?>
-
-
-
-            </h2>
-
-
-
-        </section>
-<?php
-
-        return ob_get_clean();
-    }
-
-
-
-
-
-
-    // Hub 
-
-
+    // Méthode publique pour générer et afficher les questions et réponses du QCM
     public function generateQuestions(int $idQuiz)
     {
-        
-// Logique déroulement quiz
+        // Construire le QCM en appelant la méthode privée
+        $qcm = $this->buildQcm($idQuiz);
 
+        // Appeler la méthode pour afficher les questions et réponses
+        return $this->displayQuestions($qcm);
+    }
 
-        $this->displayQuestion($this->buildQcm($idQuiz));
+    // Méthode privée pour afficher les questions et réponses
+    private function displayQuestions(Qcm $qcm): string
+    {
+        ob_start(); // Démarrer la capture de la sortie HTML
+
+        // Parcourir chaque question et l'afficher
+        foreach ($qcm->getQuestions() as $question) {
+            echo '<section>';
+            echo '<h2>' . $question->getNameQuestion() . '</h2>'; // Afficher le nom de la question
+
+            // Afficher les réponses pour chaque question
+            echo '<ul>';
+            foreach ($question->getAnswers() as $answer) {
+                echo '<li>' . $answer->getNameAnswer() . '</li>'; // Afficher le nom de la réponse
+            }
+            echo '</ul>';
+            echo '</section>';
+        }
+
+        return ob_get_clean(); // Retourner la sortie capturée
     }
 }
-
-
-
-
-
-
-
-
-
-?>
