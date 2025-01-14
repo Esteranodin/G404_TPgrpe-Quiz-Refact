@@ -1,18 +1,14 @@
 <?php
 
-// $datas = [
-//     "id" => 1,
-//     "name" => "",
+class QcmMapper
+{
+    public static function mapToObject(array $datas): Qcm
+    {
+        return new Qcm(  
+            $datas["id"],
+            $datas["name"]
+          
 
-// ];
-
-class QcmMapper {
-
-public function mapToObject(array $datas) {
-    
+        );
+    }
 }
-
-}
-
-
-?>

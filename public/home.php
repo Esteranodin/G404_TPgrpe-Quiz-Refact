@@ -1,8 +1,9 @@
 <?php
 
 include_once '../utils/autoloader.php';
+include_once '../utils/db.php';
 
-$qcm = new Qcm("La Programmation orientée objet");
+$qcm = new Qcm(1, "POO");
 
 $question = new Question("POO signifie :");
 $question2 = new Question("L'héritage c'est quoi :");
@@ -42,7 +43,10 @@ $question->setExplanationAnswer('La réponse correcte est "Programmation Orient�
 
 $question2->setExplanationAnswer('La réponse correcte est "Un principe de POO".');
 
-
+$qcmRepository = new QcmRepository($db);
+$questionRepository = new QuestionRepository($db);
+var_dump($qcmRepository->findAll());
+var_dump($questionRepository->findAllQuestions());
 ?>
 
 <!DOCTYPE html>
