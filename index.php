@@ -5,7 +5,7 @@ exit;
 
 ?>
 
-<!-- // commentaires = façon d'écrire html QcmManager
+<!-- // commentaires = autre façon d'écrire html QcmManager
 
 // final class QcmManager
 // {

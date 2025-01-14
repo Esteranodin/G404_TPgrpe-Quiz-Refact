@@ -50,5 +50,47 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+
+  
+  // Ajout des plugins personnalisés
+  plugins: [
+    function ({ addComponents }) {
+      addComponents({
+        ".btn-custom": {
+          "@apply mt-4 p-2 bg-primary text-black rounded-[30%] border-4 border-black w-[40%] font-changa text-lg":
+            {},
+        },
+        ".btn-custom:hover": {
+          "@apply bg-dark text-light border-light": {},
+        },
+        ".btn-custom:focus": {
+          "@apply bg-dark text-light border-light ring-2 ring-light": {},
+        },
+        ".btn-custom2": {
+          "@apply m-5 p-5 bg-primary text-light rounded-lg border-2 border-light w-[60%] font-changa text-3xl font-light shadow-lg ":
+            {},
+        },
+        ".btn-custom2:hover": {
+          "@apply bg-[#541A25]": {},
+        },
+        ".btn-custom2:focus": {
+          "@apply bg-[#541A25]": {},
+        },
+      });
+    },
+
+    function ({ addUtilities }) {
+      addUtilities(
+        {
+          ".text-stroke": {
+            "-webkit-text-stroke": "4.5px #6E433C",
+            color: "#FEFBE8",
+            "font-size": "4rem",
+            "line-height": "1",
+          },
+        },
+        ["responsive", "hover"]
+      );
+    },
+  ],
 }
