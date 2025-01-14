@@ -6,6 +6,7 @@ final class QcmManager
     private QuestionRepository $questionRepository;
     private AnswerRepository $answerRepository;
 
+    // Constructeur de la classe, initialise les repositories
     public function __construct()
     {
         $this->qcmRepository = new QcmRepository();
@@ -13,24 +14,19 @@ final class QcmManager
         $this->answerRepository = new AnswerRepository();
     }
 
-
-
+    // Méthode pour construire un QCM complet avec ses questions et réponses
     private function buildQcm(int $idQuiz): Qcm
     {
-
-
-        // Ici on récupère juste le thème du quiz à la position $idQuiz
+        // Récupère le QCM par son ID
         $qcm = $this->qcmRepository->find($idQuiz);
 
-
-        // Ici on récupère les questions liées a ce thème 
+        // Récupère les questions liées au QCM
         if ($qcm) {
             $questions = $this->questionRepository->findAllByQcm($qcm->getId());
             $qcm->setQuestions($questions);
         }
-       
 
-        // Ici on récupère les réponses d'une question
+        // Récupère les réponses pour chaque question du QCM
         foreach ($qcm->getQuestions() as $question) {
             $answers = $this->answerRepository->findAllByQuestion($question->getId());
             $question->setAnswers($answers);
@@ -39,7 +35,7 @@ final class QcmManager
         return $qcm;
     }
 
-
+    // Méthode pour afficher une question du QCM
     private function displayQuestion(Qcm $qcm): string
     {
         ob_start();
@@ -68,20 +64,10 @@ final class QcmManager
         return ob_get_clean();
     }
 
-
-
-
-
-
-    // Hub 
-
-
+    // Méthode principale pour générer les questions d'un QCM
     public function generateQuestions(int $idQuiz)
     {
-        
-// Logique déroulement quiz
-
-
+        // Logique de déroulement du quiz
         $this->displayQuestion($this->buildQcm($idQuiz));
     }
 }
