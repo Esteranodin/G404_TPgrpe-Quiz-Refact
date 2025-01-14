@@ -2,14 +2,17 @@
 
 include_once '../utils/autoloader.php';
 
-$qcm = new Qcm("La Prog. orientée objet");
+$qcm = new Qcm("La Programmation orientée objet");
 
 $question = new Question("POO signifie :");
 $question2 = new Question("L'héritage c'est quoi :");
 
-$reponse = new Answer("les bezjejzkekd", true);
+$questions = [
+    $question,
+    $question2
+];
 
-
+// ici on créé les instances directement dans le tableau VS au dessus instances au préalable + ajout dans un tableau dans un second temps 
 $answers = [
     new Answer('Programmation Orientée Objet',true),
     new Answer('Papillon Onirique Ostentatoire')
@@ -21,6 +24,7 @@ $answers2 = [
     new Answer('Un principe de POO', true)
 ];
 
+$QcmManager = new QcmManager();
 
 // if ($answers2[1]->getAnswerGood() === true){
 // echo"hjehrjkezh";
@@ -28,23 +32,16 @@ $answers2 = [
 //     echo "non";
 // }
 
+$qcm->setQuestions($questions);
 
 $question->setAnswers($answers);
 $question2->setAnswers($answers2);
 
 
-$question->setExplanation('La réponse correcte est "Programmation Orientée Objet".');
+$question->setExplanationAnswer('La réponse correcte est "Programmation Orientée Objet".');
 
-$question2->setExplanation('La réponse correcte est "Un principe de POO".');
+$question2->setExplanationAnswer('La réponse correcte est "Un principe de POO".');
 
-$questions = [
-    $question,
-    $question2
-];
-
-$qcm->setQuestions($questions);
-
-$QcmManager = new QcmManager();
 
 ?>
 

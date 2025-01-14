@@ -123,7 +123,7 @@ $answers = [
     new Answer('Papillon Onirique Ostentatoire')
 ];
 $question->setAnswers($answers);
-$question->setExplanation('La réponse correcte est "Programmation Orientée Objet".');
+$question->setExplanationAnswer('La réponse correcte est "Programmation Orientée Objet".');
 $questions = [
     $question
 ];

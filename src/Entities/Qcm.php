@@ -1,6 +1,6 @@
 <?php
 
-class Qcm
+final class Qcm
 {
     // propriétés
 
@@ -13,7 +13,6 @@ class Qcm
     public function __construct(string $name)
     {
         $this->name = $name;
-        $this->questions = [];
     }
 
     // geter-seter
@@ -50,9 +49,4 @@ class Qcm
     //     return $this;
     // }
 
-    public function showQcm(): self
-    {
-        $this->name;
-        return $this;
-    }
 }

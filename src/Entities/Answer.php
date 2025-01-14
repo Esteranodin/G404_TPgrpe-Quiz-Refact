@@ -5,14 +5,14 @@ class Answer
 
     // propriétés
     
-    private string $answer;
+    private string $answerName;
     private bool $answerGood;
 
     // Méthodes magiques
 
-    public function __construct(string $answer, bool $answerGood = false)
+    public function __construct(string $answerName, bool $answerGood = false)
     {
-        $this->answer = $answer;
+        $this->answerName = $answerName;
         $this->answerGood = $answerGood;
     }
 
@@ -21,7 +21,7 @@ class Answer
 
   public function getNameAnswer (): string
   {
-    return $this->answer;
+    return $this->answerName;
     
   }
   

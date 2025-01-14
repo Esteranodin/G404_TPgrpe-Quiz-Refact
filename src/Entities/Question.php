@@ -2,31 +2,34 @@
 
 class Question
 {
-
     // propriétés
-    private string $question;
+    private string $questionName;
     private array $answers;
-    private string $explanation;
+    private string $explanationAnswer;
 
 
     // Méthodes magiques
 
-    public function __construct(string $question)
+    public function __construct(string $questionName)
     {
-        $this->question = $question;
-        $this->answers = [];
+        $this->questionName = $questionName;
     }
 
     // geter-seter
 
     public function getNameQuestion(): string
     {
-        return $this->question;
+        return $this->questionName;
     }
 
     public function getAnswers(): array
     {
         return $this->answers;
+    }
+
+    public function getExplanationAnswer() : string 
+    {
+        return "La réponse correcte est : {$this->explanationAnswer}";
     }
 
     public function setAnswers(array $answers): self
@@ -42,16 +45,11 @@ class Question
         return $this;
     }
 
-    public function setExplanation(string $explanation): self
+    public function setExplanationAnswer(string $explanationAnswer): self
     {
-        $this->explanation = $explanation;
+        $this->explanationAnswer = $explanationAnswer;
          return $this ;
 
-    }
-
-    public function getExplanation() : string 
-    {
-        return "La réponse correcte est : {$this->explanation}";
     }
 
     // Méthodes
