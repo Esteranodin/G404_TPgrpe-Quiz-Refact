@@ -53,13 +53,13 @@ $QcmManager = new QcmManager();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>QUIZ</title>
+    <link rel="stylesheet" href="../public/assets/styles/output.css">
 </head>
-<body>
 
-<?=
-$QcmManager->generateDisplay($qcm);
-?>
+<body  >
+
+<?= $QcmManager->generateDisplay($qcm); ?>
     
 </body>
 </html>

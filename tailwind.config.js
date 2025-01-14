@@ -4,6 +4,7 @@ module.exports = {
     './index.php',
     './public/**.php',
   ],
+
   theme: {
     extend: {
       colors: {
@@ -15,6 +16,7 @@ module.exports = {
         background: "var(--background-color)", // Fond
         graycustom: "#858494", // Gris
       },
+      
       backgroundImage: {
         "fond-quadrille": "url('../images//Fond quadrillé.jpg')",
         "grid-pattern":
