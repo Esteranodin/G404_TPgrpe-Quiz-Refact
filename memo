@@ -1,0 +1,12 @@
+            <?php foreach ($qcm->getQuestions() as $question) { ?>
+                <h3>
+                    <?= $question->getNameQuestion() ?>
+                </h3>
+                <ul>
+                    <?php foreach ($question->getAnswers() as $answer) { ?>
+                        <li>
+                            <?= $answer->getNameAnswer() ?>
+                        </li>
+                    <?php } ?>
+                </ul>
+            <?php } ?>

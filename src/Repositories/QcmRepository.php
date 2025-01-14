@@ -1,13 +1,11 @@
 <?php
 
-class QcmRepository
+class QcmRepository extends AbstractRepository
 {
-    private PDO $db;
-
-    // Methode magique
-    public function __construct(PDO $db)
+    
+    public function __construct()
     {
-        $this->db = $db;
+        parent::__construct();
     }
 
     //Methode
@@ -20,10 +18,15 @@ class QcmRepository
         if ($qcmDatas) {
             $qcms = [];
             foreach ($qcmDatas as $qcmData) {
-                $qcms[] = QcmMapper::mapToObject($qcmData);
+                $qcms[] = QcmMapper ::mapToObject($qcmData);
             }
             return $qcms;
         }
         return null;
+    }
+
+    public function find(int $id): ?Qcm
+    {
+        
     }
 }

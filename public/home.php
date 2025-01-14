@@ -1,21 +1,20 @@
 <?php
 
 include_once '../utils/autoloader.php';
-include_once '../utils/db.php';
 
-$qcm = new Qcm(1, "POO");
+$qcm = new Qcm(1, "Mon test");
 
-$question = new Question("POO signifie :");
-$question2 = new Question("L'héritage c'est quoi :");
+// $question = new Question("POO signifie :");
+// $question2 = new Question("L'héritage c'est quoi :");
 
-$questions = [
-    $question,
-    $question2
-];
+// $questions = [
+//     $question,
+//     $question2
+// ];
 
 // ici on créé les instances directement dans le tableau VS au dessus instances au préalable + ajout dans un tableau dans un second temps 
 $answers = [
-    new Answer('Programmation Orientée Objet',true),
+    new Answer('Programmation Orientée Objet', true),
     new Answer('Papillon Onirique Ostentatoire')
 ];
 
@@ -33,24 +32,31 @@ $QcmManager = new QcmManager();
 //     echo "non";
 // }
 
-$qcm->setQuestions($questions);
+// $qcm->setQuestions($questions);
 
-$question->setAnswers($answers);
-$question2->setAnswers($answers2);
+// $question->setAnswers($answers);
+// $question2->setAnswers($answers2);
 
 
-$question->setExplanationAnswer('La réponse correcte est "Programmation Orientée Objet".');
+// $question->setExplanationAnswer('La réponse correcte est "Programmation Orientée Objet".');
 
-$question2->setExplanationAnswer('La réponse correcte est "Un principe de POO".');
-
-$qcmRepository = new QcmRepository($db);
+// $question2->setExplanationAnswer('La réponse correcte est "Un principe de POO".');
 $questionRepository = new QuestionRepository($db);
-var_dump($qcmRepository->findAll());
-var_dump($questionRepository->findAllQuestions());
+
+
+
+
+
+
+
+// var_dump($questionRepository->findAllQuestions());
+
+$qcms = $qcmRepository->findAll();
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,9 +64,10 @@ var_dump($questionRepository->findAllQuestions());
     <link rel="stylesheet" href="../public/assets/styles/output.css">
 </head>
 
-<body  >
+<body>
 
-<?= $QcmManager->generateDisplay($qcm); ?>
-    
+    <?= $QcmManager->generateQuestions($qcm); ?>
+
 </body>
+
 </html>

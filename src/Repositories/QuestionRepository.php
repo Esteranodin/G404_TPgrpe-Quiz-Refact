@@ -1,21 +1,21 @@
 <?php
 
-class QuestionRepository
+class QuestionRepository extends AbstractRepository
 {
-    private PDO $db;
 
     // Methode magique
-    public function __construct(PDO $db)
+    public function __construct()
     {
-        $this->db = $db;
+        parent::__construct();
     }
 
     //Methode
-    public function findAllQuestions(): ?array
+    public function findAllByQcm(int $idQuiz): ?array
     {
-        $sql_questions = "SELECT id, content FROM question WHERE id_quiz = :id_quiz";
-        $stmt = $this->db->prepare($sql_questions);
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
+        $sqlQuestions = "SELECT id, content , id_quiz FROM question WHERE id_quiz = :id_quiz";
+        $stmt = $this->db->prepare($sqlQuestions);
+        $stmt->bindParam(':id_quiz', $idQuiz, PDO::PARAM_INT);
         $stmt->execute();
         $questionsDatas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
