@@ -10,3 +10,65 @@
                     <?php } ?>
                 </ul>
             <?php } ?>
+
+
+
+
+Home.php : 
+
+
+
+$qcm = new Qcm(1, "Mon test");
+
+
+$answers = [
+    new Answer('Programmation Orientée Objet', true),
+    new Answer('Papillon Onirique Ostentatoire')
+];
+
+
+$answers2 = [
+    new Answer('De la thune'),
+    new Answer('Un principe de POO', true)
+];
+
+$QcmManager = new QcmManager();
+
+
+
+
+$questionRepository = new QuestionRepository($db);
+
+// $question = new Question("POO signifie :");
+// $question2 = new Question("L'héritage c'est quoi :");
+
+// $questions = [
+//     $question,
+//     $question2
+// ];
+
+// ici on créé les instances directement dans le tableau VS au dessus instances au préalable + ajout dans un tableau dans un second temps 
+
+
+
+
+// if ($answers2[1]->getAnswerGood() === true){
+// echo"hjehrjkezh";
+// } else {
+//     echo "non";
+// }
+
+// $qcm->setQuestions($questions);
+
+// $question->setAnswers($answers);
+// $question2->setAnswers($answers2);
+
+
+// $question->setExplanationAnswer('La réponse correcte est "Programmation Orientée Objet".');
+
+
+// $question2->setExplanationAnswer('La réponse correcte est "Un principe de POO".');
+
+
+
+// var_dump($questionRepository->findAllQuestions());

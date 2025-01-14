@@ -13,24 +13,24 @@ final class QcmManager
         $this->answerRepository = new AnswerRepository();
     }
 
-    public function generateQuestions(int $idQuiz)
-    {
-        
 
-
-
-        $this->displayQuestion($this->buildQcm($idQuiz));
-    }
 
     private function buildQcm(int $idQuiz): Qcm
     {
+
+
+        // Ici on récupère juste le thème du quiz à la position $idQuiz
         $qcm = $this->qcmRepository->find($idQuiz);
 
+
+        // Ici on récupère les questions liées a ce thème 
         if ($qcm) {
             $questions = $this->questionRepository->findAllByQcm($qcm->getId());
             $qcm->setQuestions($questions);
         }
+       
 
+        // Ici on récupère les réponses d'une question
         foreach ($qcm->getQuestions() as $question) {
             $answers = $this->answerRepository->findAllByQuestion($question->getId());
             $question->setAnswers($answers);
@@ -47,14 +47,14 @@ final class QcmManager
 ?>
         <section>
             <h1>
-                Test
+            <?= $qcm->getNameQuestion() ?>
             </h1>
 
 
             <h2>
 
 
-
+            <?= $answers->getNameAnswer() ?>
 
 
 
@@ -67,6 +67,31 @@ final class QcmManager
 
         return ob_get_clean();
     }
+
+
+
+
+
+
+    // Hub 
+
+
+    public function generateQuestions(int $idQuiz)
+    {
+        
+// Logique déroulement quiz
+
+
+        $this->displayQuestion($this->buildQcm($idQuiz));
+    }
 }
+
+
+
+
+
+
+
+
 
 ?>

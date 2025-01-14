@@ -1,6 +1,6 @@
 <?php
 
-class QcmRepository extends AbstractRepository
+class QcmRepository extends AbstractRepository 
 {
     
     public function __construct()
@@ -27,6 +27,21 @@ class QcmRepository extends AbstractRepository
 
     public function find(int $id): ?Qcm
     {
-        
+        $stmt = $this->db->prepare("SELECT id FROM quiz WHERE id = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+        $idQcm = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+        return $idQcm;
+
+    
+
+  
+    
+
+
+
+
     }
 }
