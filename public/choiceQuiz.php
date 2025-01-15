@@ -56,7 +56,7 @@ $qcms = $qcmRepository->findAll();
                                 </div>
                             </div>
                             <div>
-                                <img src="../images/Phone - Quiz sélection/Gold.png" alt="Médaille d'or" class="w-[2.5rem] inline-flex items-center justify-center ">
+                                <img src="./assets/images/Desktop - Quiz selection/Gold.png" alt="Médaille d'or" class="w-[2.5rem] inline-flex items-center justify-center ">
                             </div>
                         </div>
 
@@ -72,7 +72,7 @@ $qcms = $qcmRepository->findAll();
                                 </div>
                             </div>
                             <div>
-                                <img src="../images/Phone - Quiz sélection/Silver.png" alt="Médaille d'argent" class="w-[2.5rem] inline-flex items-center justify-center ">
+                                <img src="./assets/images/Desktop - Quiz selection/Silver.png" alt="Médaille d'argent" class="w-[2.5rem] inline-flex items-center justify-center ">
                             </div>
                         </div>
 
@@ -88,7 +88,7 @@ $qcms = $qcmRepository->findAll();
                                 </div>
                             </div>
                             <div>
-                                <img src="../images/Phone - Quiz sélection/Bronze.png" alt="Médaille de Bronze" class="w-[2.5rem] inline-flex items-center justify-center ">
+                                <img src="./assets/images/Desktop - Quiz selection/Bronze.png" alt="Médaille de Bronze" class="w-[2.5rem] inline-flex items-center justify-center ">
                             </div>
                         </div>
                     </div>
