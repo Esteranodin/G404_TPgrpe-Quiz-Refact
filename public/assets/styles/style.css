@@ -2,10 +2,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-
 /* FONTS  */
 @import url('https://fonts.googleapis.com/css2?family=Changa+One&family=Rubik:wght@400;500;700&display=swap');
-
 
 /* COULEURS */
 :root {
@@ -14,13 +12,12 @@
     --light-color: #FEFBE8; /* Clair */
     --dark-color: #541A25; /* Foncé */
     --background-color: #FDFAE6; /* Fond */
-  }
-  
-  html, body {
-      overflow-x: hidden; /* Empêche le défilement horizontal sur toute la page */
-      width: 100%;
-  }
+}
 
+html, body {
+    overflow-x: hidden; /* Empêche le défilement horizontal sur toute la page */
+    width: 100%;
+}
 
 /* ANIMATION FOND D'ECRAN */
 /* Animations */
@@ -64,28 +61,30 @@ body::before {
     color: #541A25; 
 }
 
-.btn-custom2 {
+@layer components {
+  .btn-custom2 {
     @apply m-5 p-5 bg-secondary text-darkprimary rounded-lg border-2 border-light w-[60%] font-changa text-3xl font-light shadow-lg;
-}
+  }
 
-.btn-custom2:hover {
+  .btn-custom2:hover {
     @apply bg-[#E7C298]; /* Utilisation de la couleur secondary-color */
-}
+  }
 
-.btn-custom2:focus {
+  .btn-custom2:focus {
     @apply bg-[#E7C298]; /* Utilisation de la couleur secondary-color */
-}
+  }
 
-.btn-custom3 {
+  .btn-custom3 {
     @apply m-5 p-5 bg-secondary text-darkprimary rounded-lg border-2 border-light w-[60%] font-changa text-3xl font-light shadow-lg;
-}
+  }
 
-.btn-custom3:hover {
+  .btn-custom3:hover {
     @apply bg-[#E7C298]; /* Utilisation de la couleur secondary-color */
-}
+  }
 
-.btn-custom3:focus {
+  .btn-custom3:focus {
     @apply bg-[#E7C298]; /* Utilisation de la couleur secondary-color */
+  }
 }
 
 progress {

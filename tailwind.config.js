@@ -1,9 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-
-
-  // Chemins où Tailwind doit rechercher les classes
-  content: ["./*.{html,js,css,php}", "./src/**/*.{html,js,css,php}", "./Front-html/**/*.html", "./public/**/*.{html,js,css,php}"],
+  mode: 'jit', // Activation du mode Just-In-Time
+  content: ["./public/**/*.html", "./src/**/*.{html,js,css,php}"],
   theme: {
     extend: {
       colors: {
@@ -16,7 +14,7 @@ module.exports = {
         graycustom: "#858494", // Gris
       },
       backgroundImage: {
-        "fond-quadrille": "url('../images//Fond quadrillé.jpg')",
+        "fond-quadrille": "url('../images/Fond quadrillé.jpg')",
         "grid-pattern":
           "url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC')",
         "gradient-clair-orange":
@@ -30,7 +28,6 @@ module.exports = {
         "inner-lg": "inset 0 4px 8px rgba(0, 0, 0, 0.2)",
         "inner-box": "inset 0 15px 10px rgba(0, 0, 0, 0.2)",
       },
-      // Ajouter le text-shadow dans les extensions de Tailwind
       textShadow: {
         white: "2px 2px 4px rgba(255, 255, 255, 0.7)", // Ombre blanche autour du texte
       },
@@ -56,14 +53,8 @@ module.exports = {
       screens: {
         'custom-500': '500px', // Ajout d'un breakpoint personnalisé pour 500px
       },
-
     },
   },
-
-
-
-  
-  // Ajout des plugins personnalisés
   plugins: [
     function ({ addComponents }) {
       addComponents({
@@ -78,7 +69,7 @@ module.exports = {
           "@apply bg-dark text-light border-light ring-2 ring-light": {},
         },
         ".btn-custom2": {
-          "@apply m-5 p-5 bg-primary text-light rounded-lg border-2 border-light w-[60%] font-changa text-3xl font-light shadow-lg ":
+          "@apply m-5 p-5 bg-primary text-light rounded-lg border-2 border-light w-[60%] font-changa text-3xl font-light shadow-lg":
             {},
         },
         ".btn-custom2:hover": {
@@ -99,7 +90,6 @@ module.exports = {
         },
       });
     },
-
     function ({ addUtilities }) {
       addUtilities(
         {
