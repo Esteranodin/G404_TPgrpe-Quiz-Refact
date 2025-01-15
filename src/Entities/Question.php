@@ -3,26 +3,26 @@
 class Question
 {
     // propriétés
-    private int $id_question;
+    private int $idQuestion;
     private string $questionName;
-    private int $id_quiz;
+    private int $idQuiz;
     private array $answers;
-    private string $explanationAnswer;
+    // private string $explanationAnswer;
 
 
     // Méthodes magiques
 
-    public function __construct(int $id_question, string $questionName, int $id_quiz)
+    public function __construct(int $idQuestion, string $questionName, int $idQuiz)
     {
-        $this->id_question = $id_question;
+        $this->idQuestion = $idQuestion;
         $this->questionName = $questionName;
-        $this->id_quiz = $id_quiz;
+        $this->idQuiz = $idQuiz;
     }
 
     // geter-seter
     public function getIdQuestion(): int
     {
-        return $this->id_question;
+        return $this->idQuestion;
     }
 
 
@@ -33,7 +33,7 @@ class Question
 
     public function getIdQuiz(): int
     {
-        return $this->id_quiz;
+        return $this->idQuiz;
     }
 
     public function getAnswers(): array
@@ -41,10 +41,10 @@ class Question
         return $this->answers;
     }
 
-    public function getExplanationAnswer(): string
-    {
-        return "La réponse correcte est : {$this->explanationAnswer}";
-    }
+    // public function getExplanationAnswer(): string
+    // {
+    //     return "La réponse correcte est : {$this->explanationAnswer}";
+    // }
 
     public function setAnswers(array $answers): self
     {
@@ -59,11 +59,11 @@ class Question
         return $this;
     }
 
-    public function setExplanationAnswer(string $explanationAnswer): self
-    {
-        $this->explanationAnswer = $explanationAnswer;
-        return $this;
-    }
+    // public function setExplanationAnswer(string $explanationAnswer): self
+    // {
+    //     $this->explanationAnswer = $explanationAnswer;
+    //     return $this;
+    // }
 
     // Méthodes
 

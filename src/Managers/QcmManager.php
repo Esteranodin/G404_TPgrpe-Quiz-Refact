@@ -24,36 +24,39 @@ final class QcmManager
         if ($qcm) {
             $questions = $this->questionRepository->findAllByQcm($qcm->getId());
             $qcm->setQuestions($questions);
-        }
+        } 
 
         // Récupère les réponses pour chaque question du QCM
         foreach ($qcm->getQuestions() as $question) {
-            $answers = $this->answerRepository->findAllByQuestion($question->getId());
+            $answers = $this->answerRepository->findAllByQuestion($question->getIdQuestion());
             $question->setAnswers($answers);
-        }
+        } 
 
         return $qcm;
     }
 
     // Méthode pour afficher une question du QCM
     private function displayQuestion(Qcm $qcm): string
+
+     
+
     {
         ob_start();
 
 ?>
         <section>
             <h1>
-            <?= $qcm->getNameQuestion() ?>
+
+            Test
+               
+           
             </h1>
 
 
             <h2>
 
-
-            <?= $answers->getNameAnswer() ?>
-
-
-
+            <?php  var_dump($qcm->getQuestions()[0]->getAnswers()[2])  ?>
+          
             </h2>
 
 
@@ -68,16 +71,9 @@ final class QcmManager
     public function generateQuestions(int $idQuiz)
     {
         // Logique de déroulement du quiz
-        $this->displayQuestion($this->buildQcm($idQuiz));
+       return  $this->displayQuestion($this->buildQcm($idQuiz));
     }
 }
-
-
-
-
-
-
-
 
 
 ?>

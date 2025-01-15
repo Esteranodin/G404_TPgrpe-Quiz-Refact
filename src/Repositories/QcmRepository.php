@@ -1,8 +1,7 @@
 <?php
 
-class QcmRepository extends AbstractRepository 
+final class QcmRepository extends AbstractRepository
 {
-    // Constructeur de la classe, appelle le constructeur de la classe parente
     public function __construct()
     {
         parent::__construct();
@@ -12,7 +11,8 @@ class QcmRepository extends AbstractRepository
     public function findAll(): ?array
     {
         // Exécute une requête SQL pour récupérer tous les QCMs
-        $stmt = $this->db->query("SELECT * FROM quiz");
+        $query = "SELECT * FROM quiz";
+        $stmt = $this->db->query($query);
         $qcmDatas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
         // Si des QCMs sont trouvés, les mapper en objets Qcm
@@ -27,14 +27,19 @@ class QcmRepository extends AbstractRepository
     }
 
     // Méthode pour trouver un QCM spécifique par son ID
-    public function find(int $id): ?Qcm
-    {
-        // Prépare et exécute une requête SQL pour récupérer le QCM par ID
-        $stmt = $this->db->prepare("SELECT id FROM quiz WHERE id = :id");
-        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-        $stmt->execute();
-        $idQcm = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        return $idQcm;
+
+    public function find(int $qcmId): Qcm
+    {
+
+        // Prépare et exécute une requête SQL pour récupérer le QCM par ID
+        $query = "SELECT * FROM quiz WHERE id = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute(['id' => $qcmId]);
+        $qcmDatas = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        return QcmMapper::mapToObject($qcmDatas);
     }
+
+
 }

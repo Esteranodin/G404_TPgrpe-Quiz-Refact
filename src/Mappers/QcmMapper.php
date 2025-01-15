@@ -3,11 +3,11 @@
 class QcmMapper
 {
     // Méthode statique pour mapper un tableau de données en objet Qcm
-    public static function mapToObject(array $datas): Qcm
+    public static function mapToObject(array $datasQcm): Qcm
     {
         return new Qcm(  
-            $datas["id"],
-            $datas["name"]
+            $datasQcm["id"],
+            $datasQcm["name"]
         );
     }
 }

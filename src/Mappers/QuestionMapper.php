@@ -3,12 +3,12 @@
 class QuestionMapper
 {
     // Méthode statique pour mapper un tableau de données en objet Question
-    public static function mapToObject(array $datas): Question
+    public static function mapToObject(array $datasQuestion): Question
     {
         return new Question(  
-            $datas["id"],
-            $datas["content"],
-            $datas["id_quiz"]
+            $datasQuestion["id"],
+            $datasQuestion["content"],
+            $datasQuestion["id_quiz"]
         );
     }
 }

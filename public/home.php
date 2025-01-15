@@ -3,16 +3,8 @@
 include_once '../utils/autoloader.php';
 
 session_start();
-var_dump($_SESSION);
-
-
-
-
-
-
 
 $qcmRepository = new QcmRepository();
-
 
 $qcms = $qcmRepository->findAll();
 ?>
@@ -56,8 +48,8 @@ $qcms = $qcmRepository->findAll();
                 <article class="relative h-full max-w-full bg-primaryopacity border-[5px] border-primary rounded-[1rem] shadow-inner-box lg:flex-row">
 
                     <h3 class="text-light font-changa my-3 text-stroke"><?= $qcm->getName() ?></h3>
-                  <!-- input caché pour récup id_quiz -->
-                    <input type="hidden" name="id_quiz" value="<?=htmlspecialchars($qcm->getId())?>">
+                  <!-- input caché pour récup idQuiz -->
+                    <input type="hidden" name="idQuiz" value="<?=htmlspecialchars($qcm->getId())?>">
                   
                     <!-- Trait décoratif -->
                     <div class="border-t-8 border-light rounded-full mx-4 mb-6"></div>
@@ -113,7 +105,7 @@ $qcms = $qcmRepository->findAll();
                     </div>
 
                     <form action="./question.php" method="post">
-                        <input type="hidden" name="id_quiz" value="<?= htmlspecialchars($qcm->getId()) ?>" />
+                        <input type="hidden" name="idQuiz" value="<?= htmlspecialchars($qcm->getId()) ?>" />
                         <button type="submit" class="btn-custom2 bg-[#541A25]:hover btn-custom2:focus">Let's go!</button>
                     </form>
 

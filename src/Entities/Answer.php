@@ -5,15 +5,21 @@ class Answer
 
     // propriétés
     
+
+    private int $id;
     private string $answerName;
-    private bool $answerGood;
+    private int $idQuestion;
+    private bool $isRight;
+
 
     // Méthodes magiques
 
-    public function __construct(string $answerName, bool $answerGood = false)
+    public function __construct(int $id, string $answerName,int $idQuestion, bool $isRight = false)
     {
+        $this->id = $id;
         $this->answerName = $answerName;
-        $this->answerGood = $answerGood;
+        $this->idQuestion = $idQuestion;
+        $this->isRight = $isRight;
     }
 
     
@@ -25,9 +31,9 @@ class Answer
     
   }
   
-  public function getAnswerGood (): bool
+  public function getisRight (): bool
   {
-    return $this->answerGood;
+    return $this->isRight;
     
   }
 

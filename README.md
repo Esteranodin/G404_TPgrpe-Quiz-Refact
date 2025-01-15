@@ -129,7 +129,7 @@ $questions = [
 ];
 $qcm->setQuestions($questions);
 
-var_dump($qcm) // vous devez avoir une instance de Qcm qui a un titre et un tableau de Question. Chaque Question a un intitulé, une explication de se bonne réponse et un tableau d'Answer possible. Chaque Answer a un intitulé et si c'est une bonne ou mauvaise réponse.
+// var_dump($qcm) // vous devez avoir une instance de Qcm qui a un titre et un tableau de Question. Chaque Question a un intitulé, une explication de se bonne réponse et un tableau d'Answer possible. Chaque Answer a un intitulé et si c'est une bonne ou mauvaise réponse.
 ?>
 ```
 
@@ -247,6 +247,6 @@ Pour arriver à ce résultat :
 * On aura plus qu'à utiliser la méthode **generateDisplay()** du manager pour afficher le quiz :
 
     ```php
-    echo $qcmManager->generateDisplay($qcm);
+    // echo $qcmManager->generateDisplay($qcm);
     ```
 

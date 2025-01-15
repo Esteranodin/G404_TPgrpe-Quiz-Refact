@@ -12,9 +12,9 @@ class QuestionRepository extends AbstractRepository
     public function findAllByQcm(int $idQuiz): ?array
     {
         // Prépare et exécute une requête SQL pour récupérer les questions du quiz
-        $sqlQuestions = "SELECT id, content , id_quiz FROM question WHERE id_quiz = :id_quiz";
+        $sqlQuestions = "SELECT id, content , id_quiz FROM question WHERE id_quiz = :idQuiz";
         $stmt = $this->db->prepare($sqlQuestions);
-        $stmt->bindParam(':id_quiz', $idQuiz, PDO::PARAM_INT);
+        $stmt->bindParam(':idQuiz', $idQuiz, PDO::PARAM_INT);
         $stmt->execute();
         $questionsDatas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -23,6 +23,7 @@ class QuestionRepository extends AbstractRepository
             $questions = [];
             foreach ($questionsDatas as $questionsData) {
                 $questions[] = QuestionMapper::mapToObject($questionsData);
+
             }
             return $questions;
         }

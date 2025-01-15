@@ -4,10 +4,8 @@ include_once '../utils/autoloader.php';
 
 session_start();
 // Stocke l'ID du quiz dans la session
-$_SESSION['id_quiz'] = $_POST['id_quiz'];
-var_dump($_SESSION);
+$_SESSION['idQuiz'] = $_POST['idQuiz'];
 
-var_dump($_POST);
 
 // Initialise le QcmManager
 $qcmManager = new QcmManager();
@@ -24,7 +22,7 @@ $qcmManager = new QcmManager();
 
 <?php 
 // Génère les questions pour le quiz spécifié
-$qcmManager->generateQuestions($_POST['id_quiz']);
+echo  $qcmManager->generateQuestions($_SESSION['idQuiz']);
 ?>
 
 </body>

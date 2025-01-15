@@ -48,11 +48,6 @@ final class Qcm
 
     // Méthodes
 
-    // public function addNameQcm(string $name): self
-    // {
-
-    //     $this->name = $name;
-    //     return $this;
-    // }
+    
 
 }

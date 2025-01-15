@@ -12,9 +12,9 @@ final class AnswerRepository extends AbstractRepository
     public function findAllByQuestion(int $idQuestion): ?array
     {
         // Prépare et exécute une requête SQL pour récupérer les réponses de la question
-        $sqlAnswers = "SELECT id, content, id_question, is_right FROM answer WHERE id_question = :id_question";
+        $sqlAnswers = "SELECT id, content, id_question, is_right FROM answer WHERE id_question = :idQuestion";
         $stmt = $this->db->prepare($sqlAnswers);
-        $stmt->bindParam(':id_question', $idQuestion, PDO::PARAM_INT);
+        $stmt->bindParam(':idQuestion', $idQuestion, PDO::PARAM_INT);
         $stmt->execute();
         $answersDatas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -22,7 +22,7 @@ final class AnswerRepository extends AbstractRepository
         if ($answersDatas) {
             $answers = [];
             foreach ($answersDatas as $answersData) {
-                $answers[] = QuestionMapper::mapToObject($answersData);
+                $answers[] = AnswerMapper::mapToObject($answersData);
             }
             return $answers;
         }
