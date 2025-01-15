@@ -37,6 +37,19 @@ class Answer
     
   }
 
+
+  public function getIdQuestion (): int
+  {
+    return $this->idQuestion;
+    
+  }
+
+  public function getId (): int
+  {
+    return $this->id;
+    
+  }
+
     // Méthodes
 
 }
