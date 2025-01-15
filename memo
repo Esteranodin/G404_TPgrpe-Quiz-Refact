@@ -1,117 +1,88 @@
-            <?php foreach ($qcm->getQuestions() as $question) { ?>
-                <h3>
-                    <?= $question->getNameQuestion() ?>
-                </h3>
-                <ul>
-                    <?php foreach ($question->getAnswers() as $answer) { ?>
-                        <li>
-                            <?= $answer->getNameAnswer() ?>
-                        </li>
-                    <?php } ?>
-                </ul>
-            <?php } ?>
+<!-- // commentaires = autre façon d'écrire html QcmManager
+
+// final class QcmManager
+// {
+
+    // public function getRepository () {
+    // Récupérer les données du QCM (via différents repository).
+    // }
+
+    // public function compoRepository () {
+    // Recomposer le QCM : à partir des datas du QCM, des datas des questions et des datas des réponses qui le compose, il sera charger de composer l'instance QCM final.
+    // }
+
+    // public function generateDisplay(Qcm $qcm): string
+    // {
+    //     $name = htmlspecialchars($qcm->getName());
+    //     $questionsHtml = "";
+    //     $answerHtml = "";
+
+    //     foreach ($qcm->getQuestions() as $question) {
+    //         $questionName = htmlspecialchars($question->getNameQuestion());
+    //         $questionsHtml .= "<h2>{$questionName}</h2>";
+
+    //         foreach ($question->getAnswers() as $answer) {
+    //             $answerName = htmlspecialchars($answer->getNameAnswer());
+    //             $answerHtml .= "<li>{$answerName}</li>";
+    //         }
+    //     }
+
+    //     $display = <<<HTML
+
+
+    //                 <section>
+    //                     <h1>{$name}</h1>
+    //                     <h2>{$questionsHtml}
+    //                         <ul>{$answerHtml}</ul>
+    //                     </h2>
+    //                 </section>
 
 
 
+    //                 HTML;
 
-Home.php : 
+    //     return $display;
+    // }
 
+    
 
+    // -------------- Autre méthode d'affichage un peu moins lisible avec concaténation: -------------- 
+    //     public function generateDisplay(Qcm $qcm): string
+    //     {
 
-$qcm = new Qcm(1, "Mon test");
+    //         $display = "<section>";
 
+    //         $display .=  "<h2>" . $qcm->getName() . "</h2>";
 
-$answers = [
-    new Answer('Programmation Orientée Objet', true),
-    new Answer('Papillon Onirique Ostentatoire')
-];
+    //         foreach ($qcm->getQuestions() as $question) {
 
+    //             $display .=  "<h3>" . $question->getNameQuestion() . "</h3>";
 
-$answers2 = [
-    new Answer('De la thune'),
-    new Answer('Un principe de POO', true)
-];
+    //             $display .=  "<ul>";
 
-$QcmManager = new QcmManager();
+    //             foreach ($question->getAnswers() as $answer) {
+    //                 $display .=  "<li>" . $answer->getNameAnswer() . "</li>";
+    //             }
+    //             $display .= "</ul>";
+    //         }
 
+    //         return $display;
+    //     }
 
-
-
-$questionRepository = new QuestionRepository($db);
-
-// $question = new Question("POO signifie :");
-// $question2 = new Question("L'héritage c'est quoi :");
-
-// $questions = [
-//     $question,
-//     $question2
-// ];
-
-// ici on créé les instances directement dans le tableau VS au dessus instances au préalable + ajout dans un tableau dans un second temps 
+// } -->
 
 
 
+<header>
+            <!-- PHONE HEADER DECORATION -->
+            <div class="absolute top-[-1rem] left-0 w-full flex justify-center items-start">
+                <img src="../images/Phone - Quiz question/Group 32.png" alt="Image décorative" class="w-[120%] max-w-none lg:hidden">
+            </div>
 
-// if ($answers2[1]->getAnswerGood() === true){
-// // echo"hjehrjkezh";
-// } else {
-//     // echo "non";
-// }
+            <!-- DESKTOP HEADER DECORATION -->
+            <img src="../images/Desktop - Quiz selection/Décoration haut gauche.png" alt="Image décorative à gauche" class="hidden lg:block absolute left-0 top-[-2rem]">
+            <img src="../images/Desktop - Quiz selection/Décoration haut droite.png" alt="Image décorative à droite" class="hidden lg:block absolute right-0 top-1">
 
-// $qcm->setQuestions($questions);
-
-// $question->setAnswers($answers);
-// $question2->setAnswers($answers2);
-
-
-// $question->setExplanationAnswer('La réponse correcte est "Programmation Orientée Objet".');
-
-
-// $question2->setExplanationAnswer('La réponse correcte est "Un principe de POO".');
-
-
-
-// // var_dump($questionRepository->findAllQuestions());
-
-
-
-
-
-
-
-
-private function displayQuestion(Qcm $qcm): string
-{
-    // Récupère toutes les questions du QCM
-    $qcmsQuestions = $qcm->getQuestions();
-
-    ob_start(); // Démarre la mise en tampon de sortie pour capturer le contenu HTML
-
-    ?>
-    <section>
-        <h1>Test</h1>
-
-        <?php foreach ($qcmsQuestions as $qcmQuestion): ?>
-            <h2><?= htmlspecialchars($qcmQuestion->getNameQuestion()) ?></h2>
-
-            <?php 
-            // Vérifie si la question a des réponses associées
-            $answers = $qcmQuestion->getAnswers();
-            if (!empty($answers)) {
-                foreach ($answers as $answer):
-                    ?>
-                    <p><?= htmlspecialchars($answer->getNameAnswer()) ?></p>
-                    <?php
-                endforeach;
-            } else {
-                echo "<p>Aucune réponse disponible.</p>";
-            }
-            ?>
-
-        <?php endforeach; ?>
-
-    </section>
-    <?php
-
-    return ob_get_clean(); // Retourne le contenu HTML généré
-}
+            <h2 class="mt-[35%] text-center font-rubik text-primary text-2xl font-medium lg:mt-1 lg:text-[4rem]">Bienvenue Toi</h2>
+            <h1 class="font-changa text-[2.5rem] text-center mb-5 text-[#541A25] lg:text-[8rem]">Choix du quiz</h1>
+        </header>
