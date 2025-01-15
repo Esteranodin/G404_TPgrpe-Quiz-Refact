@@ -26,7 +26,7 @@ $qcms = $qcmRepository->findAll();
     <!-- Section principale -->
     <section class="relative h-full max-w-full m-10 p-3 bg-gradient-clair-orange border-t-[7px] border-l-[7px] border-r-[15px] border-b-[15px] border-primary rounded-[42px]">
 
-<?php if($_GET["error"]) : ?>
+<?php if(isset($_GET["error"])) : ?>
     <p class="text-red-500 font-extrabold p-10"> Vous devez cocher une réponse à chaque question !</p>
     <?php endif ?>
 
