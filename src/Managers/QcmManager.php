@@ -45,45 +45,82 @@ final class QcmManager
         ob_start();
 
 ?>
-        <section>
-            <h1>
-
-                Test
-
-
-            </h1>
+      
 
 
 
 
-            <?php foreach ($qcmsQuestions as $qcmQuestion) :
+
+
+
+
+
+        <form action="./resultQuiz.php" method="post">
+
+<article class="m-4">
+<?php foreach ($qcmsQuestions as $qcmQuestion) :
             $qcmAnswers = $qcmQuestion->getAnswers();
-            
-           
-            
+
             ?>
-                <h2> <?= $qcmQuestion->getNameQuestion() ?>
+        <div class="bg-[#541A25] text-light font-chara rounded-lg p-6 mb-5 lg:w-[60%] ml-[25%]">
+        <?= $qcmQuestion->getNameQuestion() ?>
+
+        </div>
 
 
-
-                </h2>
-<ul>
-
-
-                <?php foreach ($qcmAnswers as $qcmAnswer) : 
+        <!-- LES REPONSES -->
+        <div class="flex flex-col mx-3 gap-5 mb-5">
+            <?php
+            
+             foreach ($qcmAnswers as $qcmAnswer) : 
+               
 
                 ?>
-                <li>
+                <label class="bg-[#6E433C] text-light font-chara rounded-lg p-6">
+                    <input type="hidden" name="isRight[<?= $qcmAnswer->getId() ?>]" value="<?= $qcmAnswer->getisRight() ?>">
+                    <input type="checkbox" name="answers[<?= $qcmAnswer->getIdQuestion() ?>]" value="<?= $qcmAnswer->getId() ?> " />
                     <?= $qcmAnswer->getNameAnswer() ?>
-                </li>
-                
-                <?php endforeach ?>
-                </ul>
+                </label><br>
+            <?php
+            endforeach
+            ?>
+        </div>
 
-            <?php endforeach ?>
+</article>
+
+<?php
+    endforeach
+?>
+<button type="submit" class="btn-custom2 btn-custom2:hover btn-custom2:focus">
+Valider
+</button>
+</form>
 
 
-        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <?php
 
         return ob_get_clean();
