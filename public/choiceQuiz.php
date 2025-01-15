@@ -3,6 +3,10 @@ session_start();
 
 include_once '../utils/autoloader.php';
 
+
+
+
+
 $qcmRepository = new QcmRepository();
 
 $qcms = $qcmRepository->findAll();
@@ -38,7 +42,8 @@ $qcms = $qcmRepository->findAll();
 
                     <h3 class="text-light font-changa my-3 text-stroke"><?= $qcm->getName() ?></h3>
                   <!-- input caché pour récup idQuiz -->
-                    <input type="hidden" name="idQuiz" value="<?=htmlspecialchars($qcm->getId())?>">
+                    <input type="hidden" name="idQuiz" value="<?=htmlspecialchars($qcm->getId());?>">
+                    <input type="hidden" name="NameQuiz" value="<?=htmlspecialchars($qcm->getName());?>">
                   
                     <!-- Trait décoratif -->
                     <div class="border-t-8 border-light rounded-full mx-4 mb-6"></div>
