@@ -27,7 +27,7 @@
                                 class="sm:w-[60px] md:w-[70px] lg:hidden">
                         </div>
                         <!-- Polygone 5 --> 
-                        <div class="absolute top-[27%] left-[5%] animate-float2 sm:left-[7%] top-[35%] md:top-[40%]">
+                        <div class="absolute top-[27%] left-[5%] animate-float2 sm:left-[7%] sm:top-[35%] md:top-[40%]">
                             <img src="./assets/images/Phone - Quiz sélection/Déco haut gauche/P-3.png" alt="Polygone 5"
                                 class="sm:w-[80px] md:w-[90px] lg:hidden">
                         </div>
@@ -131,6 +131,6 @@
 
             <h2 class="text-center font-rubik text-primary text-2xl font-medium lg:text-[60px] mt-[2%] mb-[-1rem]">
                 Bienvenue "PLAYER"</h2>
-            <h1 class="font-changa text-[3rem] text-center mb-1 text-primary lg:text-[128px] lg:mb-[-2rem]">Choix du
+            <h1 class="font-changa text-[3rem] text-center mb-1 text-primary lg:text-[128px] ">Choix du
                 quiz</h1>
         </header>

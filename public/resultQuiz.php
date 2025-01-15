@@ -4,6 +4,13 @@ require_once '../utils/autoloader.php';
 
 session_start();
 
+if (empty($_POST['answers'])){
+header('location: ./choiceQuiz.php?error=1');
+exit;
+}
+
+// faire une entity Score
+
 $score = 0;
 
 foreach ($_POST['answers'] as $key ) {
@@ -15,17 +22,11 @@ $keyInt = (int)$key;
 }
 
 
-
-
 $qcm = new QcmRepository;
 
 $qcmName = $qcm->find($_SESSION['idQuiz']);
 
-
-
 ?>
-
-
 
 
 <!DOCTYPE html>
@@ -195,7 +196,8 @@ $qcmName = $qcm->find($_SESSION['idQuiz']);
 
   </header>
 
-  <h1 class="relative max-w-full font-changa text-darkprimary text-primary text-[45px] mb-10 sm:text-[4rem] lg:text-[6rem] lg:hidden"><?= $qcmName->getName()  ?></h1>
+  <h1 class="relative max-w-full font-changa text-darkprimary text-primary text-[45px] mb-10 sm:text-[4rem] lg:text-[6rem] lg:hidden">
+    <?= $qcmName->getName()  ?></h1>
 
 
 <!-- PODIUM -->
@@ -240,7 +242,7 @@ $qcmName = $qcm->find($_SESSION['idQuiz']);
             
         </article>
 
-<a href="./">
+<a href="./choiceQuiz.php">
         <button type="submit" class="btn-custom2 btn-custom2:hover btn-custom2:focus text-lg">
             Retour aux choix des quiz
         </button>
