@@ -3,8 +3,14 @@
 include_once '../utils/autoloader.php';
 
 session_start();
+
+
 // Stocke l'ID du quiz dans la session
 $_SESSION['idQuiz'] = $_POST['idQuiz'];
+
+
+
+
 
 
 // Initialise le QcmManager
