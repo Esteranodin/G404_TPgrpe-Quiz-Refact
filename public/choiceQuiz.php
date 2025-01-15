@@ -19,12 +19,14 @@ $qcms = $qcmRepository->findAll();
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<?php require_once './partials/headerQuizChoice.php'; ?>
 
 <body class="fond-quadrille animate-bg-scroll overflow-x-hidden bg-[#6E433C] bg-opacity-50">
 
+    
     <!-- Section principale -->
     <section class="relative h-full max-w-full m-10 p-3 bg-gradient-clair-orange border-t-[7px] border-l-[7px] border-r-[15px] border-b-[15px] border-primary rounded-[42px]">
+
+    <?php require_once './partials/headerQuizChoice.php'; ?>
 
         <main class="flex flex-wrap justify-center gap-10">
             <?php
@@ -102,9 +104,9 @@ $qcms = $qcmRepository->findAll();
             }
             ?>
         </main>
+        <?php require_once './partials/footerQuizChoice.php'; ?>
     </section>
 </body>
 
-<?php require_once './partials/footerQuizChoice.php'; ?>
 
 </html>
