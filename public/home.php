@@ -1,8 +1,9 @@
 <?php
+session_start();
 
 include_once '../utils/autoloader.php';
+require_once './partials/Desktop/header/quizChoice.php';
 
-session_start();
 
 $qcmRepository = new QcmRepository();
 

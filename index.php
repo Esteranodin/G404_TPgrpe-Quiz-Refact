@@ -51,8 +51,7 @@ exit;
     //     return $display;
     // }
 
-
-
+    
 
     // -------------- Autre méthode d'affichage un peu moins lisible avec concaténation: -------------- 
     //     public function generateDisplay(Qcm $qcm): string
