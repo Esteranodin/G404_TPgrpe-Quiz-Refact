@@ -59,9 +59,12 @@ module.exports = {
 
     },
   },
-
-
-
+  variants: {
+    extend: {
+      backgroundColor: ['hover', 'focus', 'active'],
+      scale: ['hover', 'focus', 'active'],
+    },
+  },
   
   // Ajout des plugins personnalisés
   plugins: [

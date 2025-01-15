@@ -69,11 +69,15 @@ body::before {
 }
 
 .btn-custom2:hover {
-    @apply bg-[#E7C298]; /* Utilisation de la couleur secondary-color */
+    background-color: var(--secondary-color); /* Utilisation de la couleur secondary-color */
 }
 
 .btn-custom2:focus {
-    @apply bg-[#E7C298]; /* Utilisation de la couleur secondary-color */
+    background-color: var(--secondary-color); /* Utilisation de la couleur secondary-color */
+}
+
+.btn-custom2:active {
+    transform: scale(0.95); /* Réduction de la taille du bouton lors du clic */
 }
 
 .btn-custom3 {

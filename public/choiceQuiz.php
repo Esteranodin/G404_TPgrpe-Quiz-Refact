@@ -20,7 +20,8 @@ $qcms = $qcmRepository->findAll();
 </head>
 
 
-<body class="fond-quadrille animate-bg-scroll overflow-x-hidden bg-[#6E433C] bg-opacity-50">
+<body class="fond-quadrille animate-bg-scroll overflow-x-hidden">
+<div class="fixed inset-0 bg-[#6E433C] bg-opacity-50 z-0 h-full w-full"></div>
 
     
     <!-- Section principale -->
@@ -28,15 +29,15 @@ $qcms = $qcmRepository->findAll();
 
     <?php require_once './partials/headerQuizChoice.php'; ?>
 
-        <main class="flex flex-wrap justify-center gap-10">
-            <?php
+    <main class="flex flex-col gap-10 lg:flex-row lg:justify-between lg:gap-10 lg:mt-10 w-full px-[10%]">
+    <?php
             foreach ($qcms as $qcm) {
             ?>
 
                 <!-- Choix de quiz -->
-                <article class="relative h-full max-w-full bg-primaryopacity border-[5px] border-primary rounded-[1rem] shadow-inner-box lg:flex-row">
+                <article class="relative h-full max-w-full bg-primaryopacity border-[5px] border-primary rounded-[1rem] shadow-inner-box lg:flex-row transition-transform duration-300 transform hover:scale-105">
 
-                    <h3 class="text-light font-changa my-3 text-stroke"><?= $qcm->getName() ?></h3>
+                    <h3 class="text-light font-changa my-3 text-stroke text-[200%] "><?= $qcm->getName() ?></h3>
                   <!-- input caché pour récup idQuiz -->
                     <input type="hidden" name="idQuiz" value="<?=htmlspecialchars($qcm->getId())?>">
                   
@@ -95,7 +96,7 @@ $qcms = $qcmRepository->findAll();
 
                     <form action="./question.php" method="post">
                         <input type="hidden" name="idQuiz" value="<?= htmlspecialchars($qcm->getId()) ?>" />
-                        <button type="submit" class="btn-custom2 bg-[#541A25]:hover btn-custom2:focus">Let's go!</button>
+                        <button type="submit" class="btn-custom2">Let's go!</button>
                     </form>
 
                 </article>
