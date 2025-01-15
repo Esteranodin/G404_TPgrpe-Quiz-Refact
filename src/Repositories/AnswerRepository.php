@@ -28,4 +28,28 @@ final class AnswerRepository extends AbstractRepository
         }
         return null;
     }
+
+    public function findGoodAnswer(int $idQuestion): ?array
+    {
+        // Prépare et exécute une requête SQL pour récupérer les réponses de la question
+        $sqlAnswers = "SELECT * FROM answer WHERE id_question = :idQuestion";
+        $stmt = $this->db->prepare($sqlAnswers);
+        $stmt->bindParam(':idQuestion', $idQuestion, PDO::PARAM_INT);
+        $stmt->execute();
+        $goodAnswers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+        // Si des réponses sont trouvées, les mapper en objets Answer
+        if ($goodAnswers) {
+            $isRight = [];
+            foreach ($goodAnswers as $goodAnswer) {
+                $isRight[] = AnswerMapper::mapToObject($goodAnswer);
+            }
+        
+
+            return $isRight;
+        }
+        return null;
+    }
+
 }

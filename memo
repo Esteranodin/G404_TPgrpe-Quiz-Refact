@@ -115,3 +115,53 @@ private function displayQuestion(Qcm $qcm): string
 
     return ob_get_clean(); // Retourne le contenu HTML généré
 }
+
+
+
+
+
+
+
+
+
+
+
+<section>
+<h1>
+
+    Test
+
+
+</h1>
+
+
+
+
+<?php foreach ($qcmsQuestions as $qcmQuestion) :
+$qcmAnswers = $qcmQuestion->getAnswers();
+
+
+
+?>
+    <h2> <?= $qcmQuestion->getNameQuestion() ?>
+
+
+
+    </h2>
+<ul>
+
+
+    <?php foreach ($qcmAnswers as $qcmAnswer) : 
+
+    ?>
+    <li>
+        <?= $qcmAnswer->getNameAnswer() ?>
+    </li>
+    
+    <?php endforeach ?>
+    </ul>
+
+<?php endforeach ?>
+
+
+</section>
