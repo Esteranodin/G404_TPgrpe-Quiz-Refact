@@ -1,15 +1,17 @@
 {
-  "name": "poo-tp-quiz",
+  "name": "g404_tp_grpe-quiz",
   "version": "1.0.0",
-  "description": "➡️ Il prend en compte les enseignements et recommandation du [Memo](https://github.com/G404-DWWM/POO-Memo).",
+  "description": "Application ludique et interactive de quiz entre joueurs.",
   "main": "index.js",
- "scripts": {
-  "build:css": "tailwindcss build -i ./public/assets/styles/style.css -o ./public/assets/styles/output.css --watch"
-},
+  "scripts": {
+    "build:css": "tailwindcss build -i ./public/assets/styles/style.css -o ./public/assets/styles/output.css --watch"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17"
   }
 }
