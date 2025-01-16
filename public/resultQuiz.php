@@ -4,12 +4,15 @@ require_once '../utils/autoloader.php';
 
 session_start();
 
+
+
+
 if (empty($_POST['answers'])){
 header('location: ./choiceQuiz.php?error=1');
 exit;
 }
 
-// faire une entity Score
+// faire une entity/class Score
 
 $score = 0;
 
@@ -236,7 +239,7 @@ $qcmName = $qcm->find($_SESSION['idQuiz']);
                 Bravo "PLAYER"
             </h3>
             <h4 class="font-rubik text-darkprimary font-bold text-2xl">
-                Votre score : <?=  $score ?> pts
+                Votre score : <?=  $score ?> / <?= count($_POST['answers']) ?> pts
             </h4>
 
             
