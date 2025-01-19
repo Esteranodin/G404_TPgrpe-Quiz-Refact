@@ -210,39 +210,46 @@ final class QcmManager
                             <img src="./assets/images/Desktop - Quiz question/Point interrogation.png"
                                 alt="Point d'interrogation">
                         </div>
-                        <h2
-                            class="hidden lg:block bg-darkprimary text-light font-changa text-[1.8rem] rounded-lg p-6 w-[9 0%]">
-                            Ma superbe question ici là même !
-                        </h2>
-                        <div class="absolute h-[300px] w-[108px] top-0 right-0">
-                            <div class="h-[100%]">
-                                <!-- Polygone 1 -->
-                                <div class="absolute top-[35%] left-[5%] animate-float">
-                                    <img src="./assets/images/Desktop - Quiz question/Décoration haut droite/P-1.png"
-                                        alt="Polygone 1">
-                                </div>
-                                <!-- Polygone 2 -->
-                                <div class="absolute top-[63%] left-[-1rem] animate-float">
-                                    <img src="./assets/images/Desktop - Quiz question/Décoration haut droite/P-2.png"
-                                        alt="Polygone 2">
-                                </div>
-                                <!-- Polygone 3 -->
-                                <div class="absolute top-[63%] left-[3rem] animate-float2">
-                                    <img src="./assets/images/Desktop - Quiz question/Décoration haut droite/P-3.png"
-                                        alt="Polygone 3">
-                                </div>
-                                <!-- Polygone 4 -->
-                                <div class="absolute top-[80%] left-[2rem] animate-float">
-                                    <img src="./assets/images/Desktop - Quiz question/Décoration haut droite/P-4.png"
-                                        alt="Polygone 4">
-                                </div>
-                                <!-- Polygone 5 -->
-                                <div class="absolute top-[90%] left-[-1rem] animate-float2">
-                                    <img src="./assets/images/Desktop - Quiz question/Décoration haut droite/P-5.png"
-                                        alt="Polygone 4">
+
+                        <?php foreach ($qcmsQuestions as $qcmQuestion) :
+                            $qcmAnswers = $qcmQuestion->getAnswers();
+                        ?>
+                            <!-- Question -->
+                            <div class="hidden lg:block bg-darkprimary text-light font-changa text-[1.8rem] rounded-lg p-6 w-[9 0%]">
+                                <?= htmlspecialchars($qcmQuestion->getNameQuestion()) ?>
+                            </div>
+
+
+
+                            <div class="absolute h-[300px] w-[108px] top-0 right-0">
+                                <div class="h-[100%]">
+                                    <!-- Polygone 1 -->
+                                    <div class="absolute top-[35%] left-[5%] animate-float">
+                                        <img src="./assets/images/Desktop - Quiz question/Décoration haut droite/P-1.png"
+                                            alt="Polygone 1">
+                                    </div>
+                                    <!-- Polygone 2 -->
+                                    <div class="absolute top-[63%] left-[-1rem] animate-float">
+                                        <img src="./assets/images/Desktop - Quiz question/Décoration haut droite/P-2.png"
+                                            alt="Polygone 2">
+                                    </div>
+                                    <!-- Polygone 3 -->
+                                    <div class="absolute top-[63%] left-[3rem] animate-float2">
+                                        <img src="./assets/images/Desktop - Quiz question/Décoration haut droite/P-3.png"
+                                            alt="Polygone 3">
+                                    </div>
+                                    <!-- Polygone 4 -->
+                                    <div class="absolute top-[80%] left-[2rem] animate-float">
+                                        <img src="./assets/images/Desktop - Quiz question/Décoration haut droite/P-4.png"
+                                            alt="Polygone 4">
+                                    </div>
+                                    <!-- Polygone 5 -->
+                                    <div class="absolute top-[90%] left-[-1rem] animate-float2">
+                                        <img src="./assets/images/Desktop - Quiz question/Décoration haut droite/P-5.png"
+                                            alt="Polygone 4">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
                     </section>
                 </section>
@@ -251,32 +258,23 @@ final class QcmManager
 
 
         <article>
-            <?php foreach ($qcmsQuestions as $qcmQuestion) :
-                $qcmAnswers = $qcmQuestion->getAnswers();
-            ?>
-                <!-- Question -->
-                <div class="hidden lg:block bg-darkprimary text-light font-changa text-[1.8rem] rounded-lg p-6 w-[9 0%]">
-                    <?= htmlspecialchars($qcmQuestion->getNameQuestion()) ?>
-                </div>
 
+            <!-- Réponses -->
+            <div class="flex flex-wrap mx-3 gap-5 mb-5">
+                <?php foreach ($qcmAnswers as $index => $qcmAnswer) : ?>
+                    <label class="bg-primary text-light font-chara rounded-lg p-6 lg:w-[calc(50%-10px)] text-[1.5rem]">
+                        <input type="hidden" name="isRight[<?= $qcmAnswer->getId() ?>]" value="<?= $qcmAnswer->getIsRight() ?>">
+                        <input type="checkbox" name="answers[<?= $qcmAnswer->getIdQuestion() ?>]" value="<?= $qcmAnswer->getId() ?>" />
+                        <?= htmlspecialchars($qcmAnswer->getNameAnswer()) ?>
+                    </label>
 
-
-                <!-- Réponses -->
-                <div class="flex flex-wrap mx-3 gap-5 mb-5">
-                    <?php foreach ($qcmAnswers as $index => $qcmAnswer) : ?>
-                        <label class="bg-primary text-light font-chara rounded-lg p-6 lg:w-[calc(50%-10px)] text-[1.5rem]">
-                            <input type="hidden" name="isRight[<?= $qcmAnswer->getId() ?>]" value="<?= $qcmAnswer->getIsRight() ?>">
-                            <input type="checkbox" name="answers[<?= $qcmAnswer->getIdQuestion() ?>]" value="<?= $qcmAnswer->getId() ?>" />
-                            <?= htmlspecialchars($qcmAnswer->getNameAnswer()) ?>
-                        </label>
-
-                        <!-- Forcer le retour à la ligne après chaque 2 réponses -->
-                        <?php if (($index + 1) % 2 == 0) : ?>
-                            <div class="w-full"></div>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </div>
-            <?php endforeach; ?>
+                    <!-- Forcer le retour à la ligne après chaque 2 réponses -->
+                    <?php if (($index + 1) % 2 == 0) : ?>
+                        <div class="w-full"></div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+        <?php endforeach; ?>
         </article>
 
 
