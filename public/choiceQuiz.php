@@ -21,16 +21,19 @@ $qcms = $qcmRepository->findAll();
 </head>
 
 
-<body class="fond-quadrille animate-bg-scroll overflow-x-hidden bg-[#6E433C] bg-opacity-50">
- 
+<body class="fond-quadrille animate-bg-scroll">
+
+    <div class="fixed inset-0 bg-[#6E433C] bg-opacity-50 z-0 h-full w-full"></div>
+
+
     <!-- Section principale -->
     <section class="relative h-full max-w-full m-10 p-3 bg-gradient-clair-orange border-t-[7px] border-l-[7px] border-r-[15px] border-b-[15px] border-primary rounded-[42px]">
 
-<?php if(isset($_GET["error"])) : ?>
-    <p class="text-red-500 font-extrabold p-10"> Vous devez cocher une réponse à chaque question !</p>
-    <?php endif ?>
+        <?php if (isset($_GET["error"])) : ?>
+            <p class="text-red-500 font-extrabold p-10"> Vous devez cocher une réponse à chaque question !</p>
+        <?php endif ?>
 
-    <?php require_once './partials/headerQuizChoice.php'; ?>
+        <?php require_once './partials/headerQuizChoice.php'; ?>
 
         <main class="flex flex-wrap justify-center gap-10">
             <?php
@@ -40,11 +43,11 @@ $qcms = $qcmRepository->findAll();
                 <!-- Choix de quiz -->
                 <article class="relative h-full max-w-full bg-primaryopacity border-[5px] border-primary rounded-[1rem] shadow-inner-box lg:flex-row">
 
-                    <h3 class="text-light font-changa my-3 text-stroke"><?= $qcm->getName() ?></h3>
-                  <!-- input caché pour récup idQuiz -->
-                    <input type="hidden" name="idQuiz" value="<?=htmlspecialchars($qcm->getId());?>">
-                    <input type="hidden" name="NameQuiz" value="<?=htmlspecialchars($qcm->getName());?>">
-                  
+                    <h3 class="text-light font-changa my-3 text-stroke text-[250%]"><?= $qcm->getName() ?></h3>
+                    <!-- input caché pour récup idQuiz -->
+                    <input type="hidden" name="idQuiz" value="<?= htmlspecialchars($qcm->getId()); ?>">
+                    <input type="hidden" name="NameQuiz" value="<?= htmlspecialchars($qcm->getName()); ?>">
+
                     <!-- Trait décoratif -->
                     <div class="border-t-8 border-light rounded-full mx-4 mb-6"></div>
 
@@ -100,7 +103,7 @@ $qcms = $qcmRepository->findAll();
 
                     <form action="./question.php" method="post">
                         <input type="hidden" name="idQuiz" value="<?= htmlspecialchars($qcm->getId()) ?>" />
-                        <button type="submit" class="btn-custom2 bg-[#541A25]:hover btn-custom2:focus">Let's go!</button>
+                        <button type="submit" class="btn-custom2 bg-[#541A25]:hover btn-custom2:focus transition-transform hover:scale-105">Let's go!</button>
                     </form>
 
                 </article>
